@@ -29,6 +29,7 @@ const displayController = (() => {
 
   fields.forEach((field) =>
     field.addEventListener('click', (e) => {
+      if (gameController.getIsOver() || e.target.textContent !== "") return;
       gameController.playRound(e.target.dataset.index);
       updateGameBoard();
     })
