@@ -1,5 +1,6 @@
 :root {
   --background: #02222d;
+  --gridBackground: #005977;
   --font: #fff;
   --calculator: #212121;
   --screen: #86bcc6;
@@ -35,21 +36,27 @@ body {
 
 .game-grid {
   margin-top: 12%;
-  width: 45%;
+  width: 453px;
+  height: 453px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
   border: 3px solid white;
+  background-color: var(--gridBackground);
 }
 
 .field {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 140px;
+  height: 150px;
   font-size: 40px;
-  border: 3px solid white;
+  border: 1px solid white;
   cursor: pointer;
+}
+
+.field:hover {
+  background-color: #028ab7;
 }
 
 /* Footer */
