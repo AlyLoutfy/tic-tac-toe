@@ -1,7 +1,9 @@
 :root {
   --background: #02222d;
   --gridBackground: #005977;
+  --lighterBlue: #028ab7;
   --font: #fff;
+  --header: #fff;
   --calculator: #212121;
   --screen: #86bcc6;
   --buttons: #414141;
@@ -23,21 +25,50 @@ html {
 body {
   background-color: var(--background);
   color: var(--font);
-  font-family: 'Quicksand', 'Roboto', sans-serif;
-  /* font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Open Sans', sans-serif; */
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Open Sans', sans-serif;
   margin-bottom: 100px;
 }
 
 .container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  /* align-items: center; */
+  align-items: center;
+}
+
+.header {
+  margin-top: 30px;
+  display: flex;
+  width: 60%;
+  height: 5vh;
+  border-radius: 8px;
+  background-color: var(--lighterBlue);
+  justify-self: center;
+  padding: 0 20px;
+  color: white;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+}
+
+.header .title,
+.reset {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.message {
+  margin-top: 50px;
+  font-size: 35px;
+  font-weight: 500;
 }
 
 .game-grid {
-  margin-top: 12%;
-  width: 453px;
-  height: 453px;
+  margin-top: 3%;
+  width: 378px;
+  height: 378px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
@@ -49,14 +80,14 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 150px;
+  height: 125px;
   font-size: 40px;
   border: 1px solid white;
   cursor: pointer;
 }
 
 .field:hover {
-  background-color: #028ab7;
+  background-color: var(--lighterBlue);
 }
 
 /* Footer */
@@ -81,4 +112,21 @@ body {
 
 .fa-github:hover {
   transform: rotate(360deg) scale(1.4);
+}
+
+@media (max-width: 750px) {
+  .header {
+    width: 80%;
+    gap: 0px;
+  }
+
+  .game-grid {
+    /* margin-top: 100px; */
+    width: 303px;
+    height: 303px;
+  }
+
+  .field {
+    height: 100px;
+  }
 }
