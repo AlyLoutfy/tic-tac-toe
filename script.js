@@ -79,6 +79,12 @@ const gameController = (() => {
 
   const playRound = (inputIndex) => {
     gameBoard.setField(inputIndex, getCurrentPlayerSign());
+    // checkWinner(inputIndex);
+    if (checkWinner(inputIndex)) {
+      displayController.setResultMessage(getCurrentPlayerSign());
+      gameOver = true;
+      return;
+    }
     if (round === 9) {
       displayController.setResultMessage("Draw");
       gameOver = true;
@@ -93,6 +99,29 @@ const gameController = (() => {
   const getCurrentPlayerSign = () => {
     return round % 2 === 1 ? playerO.getSign() : playerX.getSign();
   }
+
+  const checkWinner = (fieldIndex) => {
+    const winConditions = [
+      [0, 1, 2],
+      [3, 4, 5],
+      [6, 7, 8],
+      [0, 3, 6],
+      [1, 4, 7],
+      [2, 5, 8],
+      [0, 4, 8],
+      [2, 4, 6],
+    ];
+
+    let over = false;
+    winConditions.forEach(e => {
+      if (gameBoard.getField(e[0]) === getCurrentPlayerSign() &&
+        gameBoard.getField(e[1]) === getCurrentPlayerSign() &&
+        gameBoard.getField(e[2]) === getCurrentPlayerSign()) {
+        over = true;
+      }
+    })
+    return over;
+  };
 
   const getIsOver = () => {
     return gameOver;
