@@ -79,7 +79,7 @@ const gameController = (() => {
 
   const playRound = (inputIndex) => {
     gameBoard.setField(inputIndex, getCurrentPlayerSign());
-    // checkWinner(inputIndex);
+
     if (checkWinner(inputIndex)) {
       displayController.setResultMessage(getCurrentPlayerSign());
       gameOver = true;
